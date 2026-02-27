@@ -12,7 +12,7 @@ Aucune installation nécessaire : ouvre simplement `kana-quiz-v2.html` dans ton 
 - Affiche une carte kana à la fois.
 - Clique sur **👁 Cliquer pour révéler** (ou touche Espace) pour afficher la lecture romaji.
 - Le mnémonique est maintenant **révélable** : il apparaît au moment de la révélation (pas avant).
-- La prononciation se joue automatiquement quand tu révèles la carte d'étude.
+- Le bouton audio 🔈 prononce le **kana réellement affiché** dans la carte d'étude.
 - Tu peux naviguer avec les flèches clavier ou les boutons **Préc / Suiv**.
 
 ### 2) Mode **Quiz**
@@ -37,7 +37,7 @@ Aucune installation nécessaire : ouvre simplement `kana-quiz-v2.html` dans ton 
 
 ## Audio et comportement
 
-- La synthèse vocale utilise Web Speech API en `ja-JP` (révélation en Étude + feedback en Défi).
+- Le bouton 🔈 utilise Web Speech API en `ja-JP`.
 - En mode Étude, l'audio suit l'index de carte d'étude (pas la dernière question Quiz/Défi), ce qui corrige le décalage de prononciation après changement d'onglet.
 
 ## Persistance

@@ -306,6 +306,26 @@
     font-size: clamp(2rem, 8vw, 4rem);
   }
 
+  /* Pronunciation button */
+  .speak-btn {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .speak-btn:hover { border-color: var(--ink); color: var(--ink); }
+
   .mnemonic {
     font-size: 0.72rem;
     color: var(--blue);
@@ -315,13 +335,15 @@
     margin-bottom: 0.5rem;
     max-width: 90%;
     text-align: center;
-    display: none;
+    min-height: 1.6rem;
+    display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.2s ease;
   }
-  .mnemonic.show { display: flex; opacity: 1; }
+  .mnemonic.show { opacity: 1; }
+  .mnemonic:not(.show) { background: transparent; }
 
   /* Vocab example in study */
   .vocab-example {

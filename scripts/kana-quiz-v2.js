@@ -523,7 +523,7 @@ const UI=(()=>{
       prompt.textContent=kana;
       prompt.classList.remove('romaji-prompt','fade');
       studyAnswer.textContent=entry.primary+(entry.accepted.length>1?' ('+entry.accepted.join(', ')+')':'');
-      // Keep mnemonic hidden until reveal in study mode
+      // Show mnemonic in study mode
       showMnemonic(kana);
       showVocab(kana);
     },120);
@@ -539,9 +539,7 @@ const UI=(()=>{
     // Speak the kana
     const es=Engine.studyEntries();
     if(es[studyIdx]){
-      const kana=es[studyIdx][0];
-      showMnemonic(kana,true);
-      Speech.speak(kana);
+      Speech.speak(es[studyIdx][0]);
     }
   }
 
@@ -687,12 +685,11 @@ const UI=(()=>{
     if(f.confusion){const c=document.createElement('span');c.className='fb-confusion';c.textContent=f.confusion;fb.appendChild(c);}
   }
 
-  function showMnemonic(kana,force=false){
+  function showMnemonic(kana){
     if(Engine.getGameMode()!=='study'){mnemonic.classList.remove('show');return;}
-    if(!force&&!studyRevealed){mnemonic.classList.remove('show');return;}
     const h=KanaData.mnemonics[kana];
     if(h){mnemonic.textContent='💡 '+h;mnemonic.classList.add('show');}
-    else{mnemonic.textContent='';mnemonic.classList.remove('show');}
+    else mnemonic.classList.remove('show');
   }
 
   function showVocab(kana){
@@ -972,6 +969,11 @@ const UI=(()=>{
     // Sound toggle
     $('sound-toggle').addEventListener('click',()=>{toggleSound();});
 
+    // Speak button
+    $('speak-btn').addEventListener('click',()=>{
+      const kana=Engine.getCurrentKana();
+      if(kana)Speech.speak(kana);
+    });
   }
 
   async function init(){
